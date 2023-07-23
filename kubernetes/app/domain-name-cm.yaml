@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: domain-name-configmap
+data:
+  DOMAIN_NAME: my-domain.com

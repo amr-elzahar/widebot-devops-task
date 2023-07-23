@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  replicas: 3
+spec:
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: amrelzahar/aspnet-mssql-web:latest
+          resources: {}
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: domain-name-configmap
+            - secretRef:
+                name: ssl-secret
