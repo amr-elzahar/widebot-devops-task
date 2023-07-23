@@ -46,7 +46,7 @@ The master node has a private IP address within a specific CIDR block.
 
 Hers is a diagram:
 
-![Architecture](https://github.com/[amr-elzahar]/[widebot-devops-task]/blob/[main]/diagram.png?raw=true)
+![Architecture](https://github.com/amr-elzahar/widebot-devops-task/blob/main/diagram.png?raw=true)
 
 # Provision Infrastructure with Terraform
 
