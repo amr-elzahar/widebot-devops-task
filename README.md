@@ -1,4 +1,4 @@
-# DevOps Task
+# WideBot DevOps Task
 
 ### Introduction
 
@@ -12,15 +12,21 @@ The following are required to complete this task:
 2. GCP account with billing enabled
 3. Terraform v0.12+ installed
 4. Docker installed
-5. kubectl configured to connect to a GKE cluster
+5. kubectl configured to connect to a GKE cluster (Just in case you want to connect to the GKE cluster from your machine)
 
 ### Project Structure
 
 The project consists mainly of 3 directories. Here is a high-level overview of the structure:
 
-- application: The code and its dependencies
-- kubernetes: The deployment files of the appliction and databases
-- terraform: terraform files to automatically provision infrastructure and k8s resources.
+1. `application`: This directory contains your application's code and its dependencies. You can place all your source code files and any required libraries or dependencies within this directory.
+
+2. `kubernetes`: This directory holds the Kubernetes deployment files. You can place all the YAML or JSON files required to deploy your application on Kubernetes in this directory.
+
+3. `terraform`: This directory contains the Terraform infrastructure files. Here, you can put the main Terraform files used to create your infrastructure (e.g., virtual machines, networks). Additionally, it includes a subdirectory called k8s.
+
+4. `terraform/k8s`: This subdirectory within the Terraform directory contains the Terraform code specifically for creating Kubernetes resources. It serves as an alternative to the kubernetes directory files. Here, you can have all the necessary Terraform files to manage your Kubernetes resources (e.g., deployments, services, configmaps).
+
+Note: The `terraform/k8s` directory provides an alternative approach to managing Kubernetes resources through Terraform, offering flexibility and ease of infrastructure management alongside your application's deployment files in the kubernetes directory.
 
 # Project Architecture:
 
@@ -72,7 +78,7 @@ cd terraform/
 terraform init
 ```
 
-3. Run the following command to verify the resources to be created.
+3. Run the following command to ve rify the resources to be created.
 
 ```
 terraform plan
