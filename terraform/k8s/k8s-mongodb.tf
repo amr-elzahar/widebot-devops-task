@@ -21,8 +21,6 @@ resource "kubernetes_stateful_set_v1" "mongodb" {
       }
 
       spec {
-        termination_grace_period_seconds = 10
-
         container {
           name  = "mongodb"
           image = "mongo"
@@ -116,24 +114,5 @@ resource "kubernetes_persistent_volume_v1" "mongodb_pv" {
       pd_name = "mongodb-disk"
       fs_type = "ext4"
     }
-  }
-}
-
-# PersistentVolumeClaim resource for mongodb-pvc
-resource "kubernetes_persistent_volume_claim_v1" "mongodb_pvc" {
-  metadata {
-    name = "mongodb-pvc"
-  }
-
-  spec {
-    resources {
-      requests = {
-        storage = "5Gi"
-      }
-    }
-
-    volume_mode = "Filesystem"
-    access_modes = ["ReadWriteOnce"]
-    storage_class_name = "my-storage-class"
   }
 }

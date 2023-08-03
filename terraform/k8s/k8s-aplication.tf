@@ -29,14 +29,14 @@ resource "kubernetes_deployment_v1" "app" {
           }
 
           env_from {
-              name = kubernetes_config_map.domain_name_configmap.metadata.0.name
-            }
             config_map_ref {
-          }
+              name = kubernetes_config_map_v1.domain_name_configmap.metadata.name
+              }
+            }
 
           env_from {
             secret_ref {
-              name = kubernetes_secret.ssl_secret.metadata.0.name
+              name = kubernetes_secret_v1.ssl_secret.metadata.0.name
             }
           }
         }
@@ -75,7 +75,7 @@ resource "kubernetes_ingress_v1" "ingress_app" {
 
   spec {
     tls {
-      secret_name = kubernetes_secret.ssl_secret.metadata.0.name
+      secret_name = kubernetes_secret_v1.ssl_secret.metadata.name
       hosts       = ["my-domain.com"]
     }
 
@@ -87,7 +87,7 @@ resource "kubernetes_ingress_v1" "ingress_app" {
         }
 
         backend {
-          service_name = kubernetes_service.web_app_service.metadata.0.name
+          service_name = kubernetes_service_v1.web_app_service.metadata.name
           service_port = 443
         }
       }
@@ -112,7 +112,7 @@ resource "kubernetes_secret_v1" "ssl_secret" {
     name = "ssl-secret"
   }
 
-  type = "Opaque"
+  type = "kubernetes.io/tls"
 
   data = {
     ssl_certificate = "<BASE64_ENCODED_CERTIFICATE>"

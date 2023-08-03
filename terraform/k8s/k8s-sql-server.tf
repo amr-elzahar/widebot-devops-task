@@ -132,22 +132,3 @@ resource "kubernetes_persistent_volume_v1" "sql_server_pv" {
     }
   }
 }
-
-# PersistentVolumeClaim resource for sql-server-pvc
-resource "kubernetes_persistent_volume_claim_v1" "sql_server_pvc" {
-  metadata {
-    name = "sql-server-pvc"
-  }
-
-  spec {
-    resources {
-      requests = {
-        storage = "5Gi"
-      }
-    }
-
-    volume_mode = "Filesystem"
-    access_modes = ["ReadWriteOnce"]
-    storage_class_name = "my-storage-class"
-  }
-}

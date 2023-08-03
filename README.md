@@ -26,7 +26,7 @@ The project consists mainly of 3 directories. Here is a high-level overview of t
 
 4. `terraform/k8s`: This subdirectory within the Terraform directory contains the Terraform code specifically for creating Kubernetes resources. It serves as an alternative to the kubernetes directory files. Here, you can have all the necessary Terraform files to manage your Kubernetes resources (e.g., deployments, services, configmaps).
 
-Note: The `terraform/k8s` directory provides an alternative approach to managing Kubernetes resources through Terraform, offering flexibility and ease of infrastructure management alongside your application's deployment files in the kubernetes directory.
+Note: The `terraform/k8s` directory provides an alternative approach to managing Kubernetes resources through Terraform, offering flexibility and ease of infrastructure management alongside your application's deployment files in the `kubernetes` directory.
 
 # Project Architecture:
 
